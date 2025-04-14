@@ -11,7 +11,7 @@ class Student:
         return f"Name: {self.name}, Roll Number: {self.roll_number}, Grade: {self.grade}"
 
 
-class StudentDatabase:
+class StudentManagement:
     def __init__(self):
         self.students = [
             Student("Ana", 1, "A"),
@@ -25,7 +25,6 @@ class StudentDatabase:
             Student("Eka", 9, "B"),
             Student("Nana", 10, "C"),
         ]
-        print("10 students added to the system!\n")
 
     def add_student(self, student):
         for s in self.students:
@@ -63,7 +62,7 @@ class StudentDatabase:
 
 class UserInterface:
     def __init__(self):
-        self.database = StudentDatabase()
+        self.database = StudentManagement()
 
     def get_student_details(self):
         name = input("Enter student name: ")
