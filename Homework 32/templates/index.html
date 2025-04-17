@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/static/styles.css" />
+    <title>Movies Home Page</title>
+  </head>
+  <body>
+    <div class="table-center-container">
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Year</th>
+          <th>Rating</th>
+          <th>Genre</th>
+          <th>Duration</th>
+        </tr>
+
+        {% for movie in movies %}
+        <tr
+          class="{% if movie.rating >= 9 %} high-rating {% elif movie.rating >= 8.8 %} medium-rating {% else %} low-rating {% endif %}"
+        >
+          <td class="movie-name">{{movie.title}}</td>
+          <td>{{movie.year}}</td>
+          <td>{{movie.rating}}</td>
+          <td>{{movie.genre}}</td>
+          <td>{{movie.duration}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <div class="footer-section">
+      <p>There are <span>{{movies|length}}</span> movies.</p>
+      <p>
+        Average duration is:
+        <span
+          >{{(movies|map(attribute='duration')|sum /
+          movies|length)|round(2)}}</span
+        >
+        min.
+      </p>
+    </div>
+  </body>
+</html>
